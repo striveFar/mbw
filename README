@@ -1,3 +1,4 @@
+## 原版介绍
 MBW determines the "copy" memory bandwidth available to userspace programs. Its simplistic approach models that of real applications. It is not tuned to extremes and it is not aware of hardware architecture, just like your average software package.
 
 2006, 2012 Andras.Horvath atnospam gmail.com
@@ -11,3 +12,54 @@ https://github.com/Willian-Zhang/mbw
 'mbw -h' for help
 
 watch out for swap usage (or turn off swap)
+
+## 内存带宽测试
+
+一、内存带宽测试工具-mbw 
+
+官网: [https://github.com/raas/mbw](https://github.com/raas/mbw)
+1、定义︰
+mbw是一个内存带宽测试工具（通常用来评估用户层应用程序进行内存拷贝操作所能够达到的带宽），可以测试在内存拷贝memcpy、字符串拷贝dumb、内存块拷贝mcblock三种不同方式下的内存拷贝速度。
+
+
+```
+
+# 执行./mbw  -q -n 10 256
+0	Method: MEMCPY	Elapsed: 0.40160	MiB: 256.00000	Copy: 637.445 MiB/s
+1	Method: MEMCPY	Elapsed: 0.40880	MiB: 256.00000	Copy: 626.220 MiB/s
+2	Method: MEMCPY	Elapsed: 0.40573	MiB: 256.00000	Copy: 630.958 MiB/s
+3	Method: MEMCPY	Elapsed: 0.40926	MiB: 256.00000	Copy: 625.515 MiB/s
+4	Method: MEMCPY	Elapsed: 0.40153	MiB: 256.00000	Copy: 637.557 MiB/s
+5	Method: MEMCPY	Elapsed: 0.40643	MiB: 256.00000	Copy: 629.876 MiB/s
+6	Method: MEMCPY	Elapsed: 0.40633	MiB: 256.00000	Copy: 630.033 MiB/s
+7	Method: MEMCPY	Elapsed: 0.39993	MiB: 256.00000	Copy: 640.107 MiB/s
+8	Method: MEMCPY	Elapsed: 0.40830	MiB: 256.00000	Copy: 626.990 MiB/s
+9	Method: MEMCPY	Elapsed: 0.40592	MiB: 256.00000	Copy: 630.658 MiB/s
+# 平均内存拷贝速率
+AVG	Method: MEMCPY	Elapsed: 0.40538	MiB: 256.00000	Copy: 631.499 MiB/s
+0	Method: DUMB	Elapsed: 2.34952	MiB: 256.00000	Copy: 108.958 MiB/s
+1	Method: DUMB	Elapsed: 2.36435	MiB: 256.00000	Copy: 108.275 MiB/s
+2	Method: DUMB	Elapsed: 2.37933	MiB: 256.00000	Copy: 107.593 MiB/s
+3	Method: DUMB	Elapsed: 2.37711	MiB: 256.00000	Copy: 107.694 MiB/s
+4	Method: DUMB	Elapsed: 2.37978	MiB: 256.00000	Copy: 107.573 MiB/s
+5	Method: DUMB	Elapsed: 2.37809	MiB: 256.00000	Copy: 107.649 MiB/s
+6	Method: DUMB	Elapsed: 2.37918	MiB: 256.00000	Copy: 107.600 MiB/s
+7	Method: DUMB	Elapsed: 2.37318	MiB: 256.00000	Copy: 107.872 MiB/s
+8	Method: DUMB	Elapsed: 2.37923	MiB: 256.00000	Copy: 107.598 MiB/s
+9	Method: DUMB	Elapsed: 2.37884	MiB: 256.00000	Copy: 107.615 MiB/s
+# 平均字符串拷贝速率
+AVG	Method: DUMB	Elapsed: 2.37386	MiB: 256.00000	Copy: 107.841 MiB/s
+0	Method: MCBLOCK	Elapsed: 0.40630	MiB: 256.00000	Copy: 630.073 MiB/s
+1	Method: MCBLOCK	Elapsed: 0.40481	MiB: 256.00000	Copy: 632.403 MiB/s
+2	Method: MCBLOCK	Elapsed: 0.40667	MiB: 256.00000	Copy: 629.506 MiB/s
+3	Method: MCBLOCK	Elapsed: 0.40812	MiB: 256.00000	Copy: 627.265 MiB/s
+4	Method: MCBLOCK	Elapsed: 0.40810	MiB: 256.00000	Copy: 627.302 MiB/s
+5	Method: MCBLOCK	Elapsed: 0.40398	MiB: 256.00000	Copy: 633.688 MiB/s
+6	Method: MCBLOCK	Elapsed: 0.40793	MiB: 256.00000	Copy: 627.560 MiB/s
+7	Method: MCBLOCK	Elapsed: 0.41343	MiB: 256.00000	Copy: 619.206 MiB/s
+8	Method: MCBLOCK	Elapsed: 0.40220	MiB: 256.00000	Copy: 636.496 MiB/s
+9	Method: MCBLOCK	Elapsed: 0.40724	MiB: 256.00000	Copy: 628.630 MiB/s
+# 平均内存块拷贝速率
+AVG	Method: MCBLOCK	Elapsed: 0.40688	MiB: 256.00000	Copy: 629.182 MiB/s
+
+```
